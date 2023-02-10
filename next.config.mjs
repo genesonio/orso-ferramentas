@@ -20,5 +20,13 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "lorempixel.com.br",
+      },
+    ],
+  },
 };
 export default config;
