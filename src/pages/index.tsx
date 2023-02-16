@@ -44,8 +44,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col">
-        <nav className="fixed top-0 flex h-20 w-[90vw] items-center justify-between self-center">
+      <main className="flex w-11/12 flex-col bg-gray-200">
+        <nav className="fixed top-0 z-50 flex h-20 w-[100vw] items-center justify-between self-center bg-gray-200 px-24 shadow-sm shadow-[#666] ">
           <div className="relative h-16 w-16">
             <Image
               src="/logo.svg"
@@ -55,16 +55,27 @@ const Home: NextPage = () => {
             />
           </div>
           <ul className="flex w-1/5 justify-between">
-            <li>Home</li>
-            <li>Sobre</li>
-            <li>Contato</li>
-            <li>Catálogo</li>
+            <li>
+              <a href="#home">Home</a>
+            </li>
+            <li>
+              <a href="#sobre">Sobre</a>
+            </li>
+            <li>
+              <a href="#contato">Contato</a>
+            </li>
+            <li>
+              <a href="">Catálogo</a>
+            </li>
           </ul>
         </nav>
 
-        <section className="flex h-[100vh] flex-col gap-[8rem] bg-slate-500 pt-24">
+        <section
+          id="home"
+          className="flex h-[970px] flex-col gap-[10rem] pt-24"
+        >
           <Swiper
-            className="mx-auto h-[55vh] w-[90vw] rounded-3xl border-2"
+            className="mx-auto h-[500px] w-full rounded-3xl"
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
@@ -87,9 +98,12 @@ const Home: NextPage = () => {
           </Swiper>
 
           <Swiper
-            className="mx-auto h-[100px] w-[90vw] border-b-2"
+            className="mx-auto h-[100px] w-full"
             slidesPerView={9}
-            autoplay
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+            }}
             loop={true}
             modules={[Autoplay]}
           >
@@ -100,6 +114,45 @@ const Home: NextPage = () => {
             ))}
           </Swiper>
         </section>
+
+        <section
+          id="sobre"
+          className="flex h-[970px] flex-col gap-[2rem] pt-24"
+        >
+          <h1 className="text-center text-5xl font-semibold">Sobre nós</h1>
+          <p className="mx-auto w-[36rem] text-center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae
+            vestibulum neque. Suspendisse nec tempus orci, at pulvinar ante. Nam
+            sem mi, tempor id sapien nec, feugiat tincidunt enim. Nullam.
+          </p>
+
+          <div className="flex h-[520px] w-full justify-between gap-3 bg-white py-8 px-60 shadow">
+            <div className="flex flex-col justify-center gap-3">
+              <h1 className="text-2xl font-semibold">Nossa missão</h1>
+              <p className="w-96 text-justify">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Curabitur hendrerit dui vel venenatis mattis. Aenean iaculis
+                velit ut blandit ornare. Morbi nisl tortor, dapibus id lorem ut,
+                auctor egestas augue.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <img src="http://lorempixel.com.br/200/200/?1" alt="" />
+              <img src="http://lorempixel.com.br/200/200/?2" alt="" />
+              <img
+                src="http://lorempixel.com.br/420/250/?3"
+                alt=""
+                className="col-span-2"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="contato"
+          className="p flex h-[970px] justify-between pt-24"
+        ></section>
       </main>
     </>
   );
