@@ -36,6 +36,10 @@ const Home: NextPage = () => {
     "http://lorempixel.com.br/150/150/?16",
   ];
 
+  const handleCopy = (text: string) => {
+    navigator.clipboard.writeText(text).catch((err) => console.error(err));
+  };
+
   return (
     <>
       <Head>
@@ -45,7 +49,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="flex w-11/12 flex-col bg-gray-200">
-        <nav className="fixed top-0 z-50 flex h-20 w-[100vw] items-center justify-between self-center bg-gray-200 px-24 shadow-sm shadow-[#666] ">
+        <nav className="fixed top-0 z-50 flex h-20 w-[100vw] items-center justify-between self-center bg-gray-200 px-[5%] shadow-sm shadow-[#666] ">
           <div className="relative h-16 w-16">
             <Image
               src="/logo.svg"
@@ -54,7 +58,8 @@ const Home: NextPage = () => {
               className="object-cover"
             />
           </div>
-          <ul className="flex w-1/5 justify-between">
+
+          <ul className="flex gap-7">
             <li>
               <a href="#home">Home</a>
             </li>
@@ -70,12 +75,9 @@ const Home: NextPage = () => {
           </ul>
         </nav>
 
-        <section
-          id="home"
-          className="flex h-[970px] flex-col gap-[10rem] pt-24"
-        >
+        <section id="home" className="flex h-[800px] flex-col gap-10 pt-24">
           <Swiper
-            className="mx-auto h-[500px] w-full rounded-3xl"
+            className="mx-auto h-[35vw] w-full rounded-3xl max-sm:h-[45vw]"
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
@@ -126,7 +128,7 @@ const Home: NextPage = () => {
             sem mi, tempor id sapien nec, feugiat tincidunt enim. Nullam.
           </p>
 
-          <div className="flex h-[520px] w-full justify-between gap-3 bg-white py-8 px-60 shadow">
+          <div className="flex h-[520px] w-full justify-between bg-white py-8 px-8 shadow">
             <div className="flex flex-col justify-center gap-3">
               <h1 className="text-2xl font-semibold">Nossa missão</h1>
               <p className="w-96 text-justify">
@@ -149,10 +151,110 @@ const Home: NextPage = () => {
           </div>
         </section>
 
-        <section
-          id="contato"
-          className="p flex h-[970px] justify-between pt-24"
-        ></section>
+        <section id="contato" className="p flex h-[970px] gap-12 ">
+          <div className="relative h-full w-1/2">
+            <Image
+              fill
+              alt=""
+              className="object-cover"
+              src="http://lorempixel.com.br/1080/1080"
+            />
+          </div>
+
+          <div className="flex w-1/2 flex-col gap-5 pt-24">
+            <h1 className="text-center text-5xl font-bold">Contato</h1>
+            <form className="flex w-full flex-col gap-2">
+              <label htmlFor="fullName">Nome:</label>
+              <input
+                className="w-60"
+                type="text"
+                id="fullName"
+                name="fullName"
+                required
+              />
+
+              <label htmlFor="email">E-mail:</label>
+              <input
+                className="w-60"
+                type="email"
+                id="email"
+                name="email"
+                required
+              />
+
+              <label htmlFor="subject">Assunto:</label>
+              <input
+                className="w-60"
+                type="text"
+                id="subject"
+                name="subject"
+                required
+              />
+
+              <label htmlFor="message">Mensagem:</label>
+              <textarea
+                className="h-24 w-80"
+                id="message"
+                name="message"
+                required
+              />
+
+              <button
+                className="mt-3 h-10 w-24 rounded-2xl border-2 border-gray-700 p-1"
+                type="submit"
+              >
+                Enviar
+              </button>
+            </form>
+            <div className="flex justify-between gap-5">
+              <div className="">
+                <p>Celular: </p>
+                <p>(48) 9 9821-0444</p>
+                <div className="flex gap-5">
+                  <button
+                    className="relative h-8 w-8"
+                    onClick={() => handleCopy("48998210444")}
+                  >
+                    <Image
+                      fill
+                      className="object-cover"
+                      src="/copy.svg"
+                      alt="Copy button"
+                    />
+                  </button>
+                  <a
+                    className="relative h-8 w-8"
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://wa.me/5548998210444?text=Olá,%20gostaria%20de%20um%20orçamento."
+                  >
+                    <Image
+                      fill
+                      className="object-cover"
+                      src="/whatsapp.svg"
+                      alt="Whatsapp button"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div className="">
+                <p>Email:</p>
+                <p>orsoferramentas@exemplo.com</p>
+                <button
+                  className="relative h-8 w-8"
+                  onClick={() => handleCopy("orsoferramentas@exemplo.com")}
+                >
+                  <Image
+                    fill
+                    className="object-cover"
+                    src="/copy.svg"
+                    alt="Copy button"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </>
   );
