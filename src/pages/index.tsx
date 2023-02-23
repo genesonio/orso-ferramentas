@@ -40,6 +40,8 @@ const Home: NextPage = () => {
     navigator.clipboard.writeText(text).catch((err) => console.error(err));
   };
 
+  const year = new Date().getFullYear();
+
   return (
     <>
       <Head>
@@ -77,6 +79,7 @@ const Home: NextPage = () => {
 
         <section id="home" className="flex h-[800px] flex-col gap-10 pt-24">
           <Swiper
+            grabCursor={true}
             className="mx-auto h-[35vw] w-full rounded-3xl max-sm:h-[45vw]"
             autoplay={{
               delay: 2500,
@@ -100,13 +103,13 @@ const Home: NextPage = () => {
           </Swiper>
 
           <Swiper
+            grabCursor={true}
             className="mx-auto h-[100px] w-full"
             slidesPerView={9}
             autoplay={{
               delay: 2000,
               disableOnInteraction: false,
             }}
-            loop={true}
             modules={[Autoplay]}
           >
             {logos.map((url, index) => (
@@ -128,7 +131,7 @@ const Home: NextPage = () => {
             sem mi, tempor id sapien nec, feugiat tincidunt enim. Nullam.
           </p>
 
-          <div className="flex h-[520px] w-full justify-between bg-white py-8 px-8 shadow">
+          <div className="flex h-[520px] w-full justify-between rounded-3xl bg-white py-8 px-8 shadow">
             <div className="flex flex-col justify-center gap-3">
               <h1 className="text-2xl font-semibold">Nossa missão</h1>
               <p className="w-96 text-justify">
@@ -140,18 +143,26 @@ const Home: NextPage = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <img src="http://lorempixel.com.br/200/200/?1" alt="" />
-              <img src="http://lorempixel.com.br/200/200/?2" alt="" />
+              <img
+                className="rounded-2xl"
+                src="http://lorempixel.com.br/200/200/?1"
+                alt=""
+              />
+              <img
+                className="rounded-2xl"
+                src="http://lorempixel.com.br/200/200/?2"
+                alt=""
+              />
               <img
                 src="http://lorempixel.com.br/420/250/?3"
                 alt=""
-                className="col-span-2"
+                className="col-span-2 rounded-2xl"
               />
             </div>
           </div>
         </section>
 
-        <section id="contato" className="p flex h-[970px] gap-12 ">
+        <section id="contato" className="p flex h-[800px] gap-12 pt-20 ">
           <div className="relative h-full w-1/2">
             <Image
               fill
@@ -161,51 +172,15 @@ const Home: NextPage = () => {
             />
           </div>
 
-          <div className="flex w-1/2 flex-col gap-5 pt-24">
+          <div className="flex w-1/2 flex-col gap-16 pt-12">
             <h1 className="text-center text-5xl font-bold">Contato</h1>
-            <form className="flex w-full flex-col gap-2">
-              <label htmlFor="fullName">Nome:</label>
-              <input
-                className="w-60"
-                type="text"
-                id="fullName"
-                name="fullName"
-                required
-              />
-
-              <label htmlFor="email">E-mail:</label>
-              <input
-                className="w-60"
-                type="email"
-                id="email"
-                name="email"
-                required
-              />
-
-              <label htmlFor="subject">Assunto:</label>
-              <input
-                className="w-60"
-                type="text"
-                id="subject"
-                name="subject"
-                required
-              />
-
-              <label htmlFor="message">Mensagem:</label>
-              <textarea
-                className="h-24 w-80"
-                id="message"
-                name="message"
-                required
-              />
-
-              <button
-                className="mt-3 h-10 w-24 rounded-2xl border-2 border-gray-700 p-1"
-                type="submit"
-              >
-                Enviar
-              </button>
-            </form>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              auctor eu enim nec molestie. Duis molestie libero eu urna interdum
+              iaculis. Vestibulum nec mattis massa, id tincidunt arcu.
+              Pellentesque pharetra justo leo, id tempus nisl sollicitudin eget.
+              Fusce faucibus egestas erat eu accumsan.
+            </p>
             <div className="flex justify-between gap-5">
               <div className="">
                 <p>Celular: </p>
@@ -255,6 +230,27 @@ const Home: NextPage = () => {
             </div>
           </div>
         </section>
+
+        <footer className="flex h-20 w-full items-center justify-between">
+          <div>
+            <p>&copy; Orso Ferramentas {year}</p>
+          </div>
+          <div className="relative h-6 w-6">
+            <a
+              className=""
+              href="http://www.instagram.com/orsoferramentas/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                fill
+                className="object-cover"
+                src="/instagram.svg"
+                alt="Instagram logo"
+              />
+            </a>
+          </div>
+        </footer>
       </main>
     </>
   );
