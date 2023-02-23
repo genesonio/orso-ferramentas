@@ -23,7 +23,15 @@ next-env.d.ts
 # misc
 .DS_Store
 *.pem
-.vscode
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 # debug
 npm-debug.log*
