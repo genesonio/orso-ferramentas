@@ -4,9 +4,11 @@
 /node_modules
 /.pnp
 .pnp.js
+/.vscode/*
 
 # testing
 /coverage
+/public/*/*
 
 # database
 /prisma/db.sqlite
