@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,11 +7,20 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-family: Montserrat;
+    color: #272727;
+    background-color: #d4d4d4;
   }
   #__next {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(229, 231, 235);
+  }
+}
+
+@layer utilities {
+  *::-webkit-scrollbar {
+    width: 0;
+    height: 0;
   }
 }
