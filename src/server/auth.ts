@@ -1,13 +1,13 @@
-import type { GetServerSidePropsContext } from "next";
+import type { GetServerSidePropsContext } from "next"
 import {
   getServerSession,
   type NextAuthOptions,
   type DefaultSession,
-} from "next-auth";
-import DiscordProvider from "next-auth/providers/discord";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { env } from "../env.mjs";
-import { prisma } from "./db";
+} from "next-auth"
+import Auth0Provider from "next-auth/providers/auth0"
+import { PrismaAdapter } from "@next-auth/prisma-adapter"
+import { env } from "../env.mjs"
+import { prisma } from "./db"
 
 /**
  * Module augmentation for `next-auth` types.
@@ -19,10 +19,10 @@ import { prisma } from "./db";
 declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
-      id: string;
+      id: string
       // ...other properties
       // role: UserRole;
-    } & DefaultSession["user"];
+    } & DefaultSession[ "user" ]
   }
 
   // interface User {
@@ -39,20 +39,21 @@ declare module "next-auth" {
  **/
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    session({ session, user }) {
-      if (session.user) {
-        session.user.id = user.id;
+    session( { session, user } ) {
+      if ( session.user ) {
+        session.user.id = user.id
         // session.user.role = user.role; <-- put other properties on the session here
       }
-      return session;
+      return session
     },
   },
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter( prisma ),
   providers: [
-    DiscordProvider({
-      clientId: env.DISCORD_CLIENT_ID,
-      clientSecret: env.DISCORD_CLIENT_SECRET,
-    }),
+    Auth0Provider( {
+      clientId: env.AUTH0_CLIENT_ID,
+      clientSecret: env.AUTH0_CLIENT_SECRET,
+      issuer: env.AUTH0_ISSUER
+    } )
     /**
      * ...add more providers here
      *
@@ -63,7 +64,7 @@ export const authOptions: NextAuthOptions = {
      * @see https://next-auth.js.org/providers/github
      **/
   ],
-};
+}
 
 /**
  * Wrapper for `getServerSession` so that you don't need to import the
@@ -71,9 +72,9 @@ export const authOptions: NextAuthOptions = {
  *
  * @see https://next-auth.js.org/configuration/nextjs
  **/
-export const getServerAuthSession = (ctx: {
-  req: GetServerSidePropsContext["req"];
-  res: GetServerSidePropsContext["res"];
-}) => {
-  return getServerSession(ctx.req, ctx.res, authOptions);
-};
+export const getServerAuthSession = ( ctx: {
+  req: GetServerSidePropsContext[ "req" ]
+  res: GetServerSidePropsContext[ "res" ]
+} ) => {
+  return getServerSession( ctx.req, ctx.res, authOptions )
+}
