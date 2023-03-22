@@ -8,32 +8,24 @@ import "swiper/swiper.css";
 
 const Home: NextPage = () => {
   const images = [
-    "http://lorempixel.com.br/1750/?1",
-    "http://lorempixel.com.br/1750/?2",
-    "http://lorempixel.com.br/1750/?3",
-    "http://lorempixel.com.br/1750/?4",
-    "http://lorempixel.com.br/1750/?5",
-    "http://lorempixel.com.br/1750/?6",
-    "http://lorempixel.com.br/1750/?7",
+    "/orso/elevacar_texto.png",
+    "/orso/ferramentas_texto.png",
+    "/orso/pneumatica_texto.png",
   ];
 
   const logos = [
-    "http://lorempixel.com.br/150/150/?1",
-    "http://lorempixel.com.br/150/150/?2",
-    "http://lorempixel.com.br/150/150/?3",
-    "http://lorempixel.com.br/150/150/?4",
-    "http://lorempixel.com.br/150/150/?5",
-    "http://lorempixel.com.br/150/150/?6",
-    "http://lorempixel.com.br/150/150/?7",
-    "http://lorempixel.com.br/150/150/?8",
-    "http://lorempixel.com.br/150/150/?9",
-    "http://lorempixel.com.br/150/150/?10",
-    "http://lorempixel.com.br/150/150/?11",
-    "http://lorempixel.com.br/150/150/?12",
-    "http://lorempixel.com.br/150/150/?13",
-    "http://lorempixel.com.br/150/150/?14",
-    "http://lorempixel.com.br/150/150/?15",
-    "http://lorempixel.com.br/150/150/?16",
+    "/empresas/cartec.png",
+    "/empresas/celfer.png",
+    "/empresas/chimonek.png",
+    "/empresas/Emeb.png",
+    "/empresas/engecass.svg",
+    "/empresas/felar.png",
+    "/empresas/kingtony.png",
+    "/empresas/m7.svg",
+    "/empresas/planatc.png",
+    "/empresas/raven.png",
+    "/empresas/sigma.png",
+    "/empresas/uniao.png",
   ];
 
   const handleCopy = (text: string) => {
@@ -50,11 +42,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex w-11/12 flex-col bg-gray-200">
-        <nav className="fixed top-0 z-50 flex h-20 w-[100vw] items-center justify-between self-center bg-gray-200 px-[5%] shadow-sm shadow-[#666] ">
-          <div className="relative h-16 w-16">
+      <main className="flex w-11/12 flex-col">
+        <nav className="fixed top-0 z-50 flex h-20 w-screen items-center justify-between self-center bg-[#d4d4d4] px-[4.2%] shadow-sm shadow-[#666] ">
+          <div className="relative h-36 w-36">
             <Image
-              src="/logo.svg"
+              src="/logo.png"
               fill
               alt="Logotipo"
               className="object-cover"
@@ -77,10 +69,10 @@ const Home: NextPage = () => {
           </ul>
         </nav>
 
-        <section id="home" className="flex h-[800px] flex-col gap-10 pt-24">
+        <section id="home" className="flex h-[800px] flex-col gap-10 pt-20">
           <Swiper
             grabCursor={true}
-            className="mx-auto h-[35vw] w-full rounded-3xl max-sm:h-[45vw]"
+            className="left-[-4.55%] h-[66vw] w-screen"
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
@@ -89,10 +81,9 @@ const Home: NextPage = () => {
             fadeEffect={{
               crossFade: true,
             }}
-            speed={800}
+            speed={1500}
             modules={[Autoplay, EffectFade]}
             loop={true}
-            spaceBetween={10}
             slidesPerView={1}
           >
             {images.map((url, index) => (
@@ -105,9 +96,10 @@ const Home: NextPage = () => {
           <Swiper
             grabCursor={true}
             className="mx-auto h-[100px] w-full"
-            slidesPerView={9}
+            spaceBetween={30}
+            slidesPerView={7}
             autoplay={{
-              delay: 2000,
+              delay: 1500,
               disableOnInteraction: false,
             }}
             modules={[Autoplay]}
@@ -126,19 +118,21 @@ const Home: NextPage = () => {
         >
           <h1 className="text-center text-5xl font-semibold">Sobre nós</h1>
           <p className="mx-auto w-[36rem] text-center">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae
-            vestibulum neque. Suspendisse nec tempus orci, at pulvinar ante. Nam
-            sem mi, tempor id sapien nec, feugiat tincidunt enim. Nullam.
+            Bem-vindo à nossa empresa de vendas de ferramentas automotivas!
+            Trabalhamos com as melhores marcas do mercado, temos uma ampla
+            variedade de ferramentas para atender às suas necessidades, sejam
+            elas para uso profissional ou caseiro.
           </p>
 
-          <div className="flex h-[520px] w-full justify-between rounded-3xl bg-white py-8 px-8 shadow">
+          <div className="flex h-[520px] w-full justify-between rounded-3xl bg-[#272727] py-8 px-8 text-[#d4d4d4] shadow">
             <div className="flex flex-col justify-center gap-3">
-              <h1 className="text-2xl font-semibold">Nossa missão</h1>
+              <h1 className="text-4xl font-semibold">Nossa missão</h1>
               <p className="w-96 text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Curabitur hendrerit dui vel venenatis mattis. Aenean iaculis
-                velit ut blandit ornare. Morbi nisl tortor, dapibus id lorem ut,
-                auctor egestas augue.
+                Entregar ferramentas especiais com qualidade e confiabilidade,
+                superando as expectativas dos clientes. Utilizamos materiais de
+                alta qualidade e tecnologias avançadas em nossa produção.
+                Oferecemos suporte técnico e atendimento excepcional para
+                garantir a satisfação dos clientes.
               </p>
             </div>
 
@@ -174,12 +168,13 @@ const Home: NextPage = () => {
 
           <div className="flex w-1/2 flex-col gap-16 pt-12">
             <h1 className="text-center text-5xl font-bold">Contato</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              auctor eu enim nec molestie. Duis molestie libero eu urna interdum
-              iaculis. Vestibulum nec mattis massa, id tincidunt arcu.
-              Pellentesque pharetra justo leo, id tempus nisl sollicitudin eget.
-              Fusce faucibus egestas erat eu accumsan.
+            <p className="text-justify">
+              Estamos ansiosos para ouvir de você! Se você tiver alguma dúvida
+              ou quiser saber mais sobre nossos produtos, não hesite em nos
+              contatar. Nossa equipe de atendimento ao cliente está disponível
+              para ajudar a responder a quaisquer perguntas que você possa ter.
+              Você pode entrar em contato conosco por telefone, e-mail ou
+              através de nossas redes sociais.
             </p>
             <div className="flex justify-between gap-5">
               <div className="">
@@ -187,7 +182,7 @@ const Home: NextPage = () => {
                 <p>(48) 9 9821-0444</p>
                 <div className="flex gap-5">
                   <button
-                    className="relative h-8 w-8"
+                    className="relative h-8 w-8 hover:translate-y-[-1px] active:translate-y-[1px]"
                     onClick={() => handleCopy("48998210444")}
                   >
                     <Image
@@ -198,7 +193,7 @@ const Home: NextPage = () => {
                     />
                   </button>
                   <a
-                    className="relative h-8 w-8"
+                    className="relative h-7 w-7 hover:translate-y-[-1px] active:translate-y-[1px]"
                     target="_blank"
                     rel="noreferrer"
                     href="https://wa.me/5548998210444?text=Olá,%20gostaria%20de%20um%20orçamento."
@@ -216,7 +211,7 @@ const Home: NextPage = () => {
                 <p>Email:</p>
                 <p>orsoferramentas@exemplo.com</p>
                 <button
-                  className="relative h-8 w-8"
+                  className="relative h-8 w-8 hover:translate-y-[-1px] active:translate-y-[1px]"
                   onClick={() => handleCopy("orsoferramentas@exemplo.com")}
                 >
                   <Image
@@ -231,7 +226,7 @@ const Home: NextPage = () => {
           </div>
         </section>
 
-        <footer className="flex h-20 w-full items-center justify-between">
+        <footer className="relative left-[-4.5%] mt-5 flex h-20 w-screen items-center justify-between px-[4.5%] shadow-footer shadow-[#666]">
           <div>
             <p>&copy; Orso Ferramentas {year}</p>
           </div>
