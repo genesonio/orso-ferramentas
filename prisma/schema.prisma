@@ -76,3 +76,10 @@ model Tools {
     name  String
     photo String
 }
+
+model Carousel {
+    id       String  @id @default(cuid())
+    photo    String
+    title    String?
+    subTitle String?
+}
