@@ -5,6 +5,7 @@ import { Autoplay, EffectFade } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import "swiper/swiper.css";
+import NaturalImage from "../components/NaturalImage";
 
 const Home: NextPage = () => {
   const images = [
@@ -69,10 +70,13 @@ const Home: NextPage = () => {
           </ul>
         </nav>
 
-        <section id="home" className="flex h-[800px] flex-col gap-10 pt-20">
+        <section
+          id="home"
+          className="flex h-screen flex-col gap-10 pt-20  max-[1025px]:h-[75vh] max-[768px]:h-[63vh] max-sm:h-[45vh]"
+        >
           <Swiper
+            className="left-[-4.55%] h-auto w-screen"
             grabCursor={true}
-            className="left-[-4.55%] h-[66vw] w-screen"
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
@@ -88,21 +92,38 @@ const Home: NextPage = () => {
           >
             {images.map((url, index) => (
               <SwiperSlide key={index}>
-                <Image fill style={{ objectFit: "cover" }} src={url} alt="" />
+                <NaturalImage src={url} alt="" />
               </SwiperSlide>
             ))}
           </Swiper>
 
           <Swiper
+            className="mx-auto h-[100px] w-full max-md:h-[75px] max-sm:h-[50px]"
             grabCursor={true}
-            className="mx-auto h-[100px] w-full"
             spaceBetween={30}
-            slidesPerView={7}
             autoplay={{
               delay: 1500,
               disableOnInteraction: false,
             }}
             modules={[Autoplay]}
+            breakpoints={{
+              425: {
+                width: 425,
+                slidesPerView: 3,
+              },
+              768: {
+                width: 768,
+                slidesPerView: 3,
+              },
+              1024: {
+                width: 1024,
+                slidesPerView: 5,
+              },
+              1440: {
+                width: 1440,
+                slidesPerView: 7,
+              },
+            }}
           >
             {logos.map((url, index) => (
               <SwiperSlide key={index}>
@@ -114,20 +135,20 @@ const Home: NextPage = () => {
 
         <section
           id="sobre"
-          className="flex h-[970px] flex-col gap-[2rem] pt-24"
+          className="flex h-[970px] flex-col gap-[2rem] pt-24 max-sm:h-fit"
         >
           <h1 className="text-center text-5xl font-semibold">Sobre nós</h1>
-          <p className="mx-auto w-[36rem] text-center">
+          <p className="mx-auto w-auto max-w-lg text-center">
             Bem-vindo à nossa empresa de vendas de ferramentas automotivas!
             Trabalhamos com as melhores marcas do mercado, temos uma ampla
             variedade de ferramentas para atender às suas necessidades, sejam
             elas para uso profissional ou caseiro.
           </p>
 
-          <div className="flex h-[520px] w-full justify-between rounded-3xl bg-[#272727] py-8 px-8 text-[#d4d4d4] shadow">
-            <div className="flex flex-col justify-center gap-3">
+          <div className="flex h-[520px] w-full justify-between gap-x-8 rounded-3xl bg-[#272727] py-8 px-8 text-[#d4d4d4] shadow max-[950px]:items-center max-sm:h-fit max-sm:flex-col max-sm:gap-y-8 max-sm:gap-x-0">
+            <div className="flex flex-col justify-center gap-3 xl:ml-[10%]">
               <h1 className="text-4xl font-semibold">Nossa missão</h1>
-              <p className="w-96 text-justify">
+              <p className="w-auto max-w-lg text-justify">
                 Entregar ferramentas especiais com qualidade e confiabilidade,
                 superando as expectativas dos clientes. Utilizamos materiais de
                 alta qualidade e tecnologias avançadas em nossa produção.
@@ -136,7 +157,7 @@ const Home: NextPage = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4 max-[950px]:max-h-[70%] max-[950px]:items-center xl:mr-[10%]">
               <img
                 className="rounded-2xl"
                 src="http://lorempixel.com.br/200/200/?1"
@@ -156,17 +177,17 @@ const Home: NextPage = () => {
           </div>
         </section>
 
-        <section id="contato" className="p flex h-[800px] gap-12 pt-20 ">
-          <div className="relative h-full w-1/2">
-            <Image
-              fill
-              alt=""
-              className="object-cover"
-              src="http://lorempixel.com.br/1080/1080"
-            />
-          </div>
+        <section
+          id="contato"
+          className="max-sm: flex h-[800px] gap-12 pt-11 max-md:h-[650px]"
+        >
+          <NaturalImage
+            alt=""
+            src="http://lorempixel.com.br/1080/1080"
+            className="w-1/2 object-contain max-md:hidden"
+          />
 
-          <div className="flex w-1/2 flex-col gap-16 pt-12">
+          <div className="flex w-1/2 flex-col gap-16 pt-12 max-md:w-full max-md:pt-2">
             <h1 className="text-center text-5xl font-bold">Contato</h1>
             <p className="text-justify">
               Estamos ansiosos para ouvir de você! Se você tiver alguma dúvida
@@ -176,7 +197,7 @@ const Home: NextPage = () => {
               Você pode entrar em contato conosco por telefone, e-mail ou
               através de nossas redes sociais.
             </p>
-            <div className="flex justify-between gap-5">
+            <div className="flex justify-between gap-5 max-[950px]:flex-col max-[950px]:overflow-x-hidden max-md:flex-row max-sm:flex-col">
               <div className="">
                 <p>Celular: </p>
                 <p>(48) 9 9821-0444</p>
