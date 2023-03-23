@@ -26,6 +26,10 @@ const config = {
         protocol: "http",
         hostname: "lorempixel.com.br",
       },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
     ],
   },
 };
