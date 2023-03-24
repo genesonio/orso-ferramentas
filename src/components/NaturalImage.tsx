@@ -11,8 +11,6 @@ interface NaturalImage extends React.HTMLAttributes<HTMLImageElement> {
 const NaturalImage: FC<NaturalImage> = ({ src, alt, ...props }) => {
   const [ratio, setRatio] = useState(16 / 9); // default to 16:9
 
-  console.log(src);
-
   return (
     <Image
       {...props}
@@ -31,7 +29,6 @@ const NaturalImage: FC<NaturalImage> = ({ src, alt, ...props }) => {
         naturalHeight: number;
       }) => {
         setRatio(naturalWidth / naturalHeight);
-        console.log(`W: ${naturalWidth} H: ${naturalHeight}`);
       }}
     />
   );
