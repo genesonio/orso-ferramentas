@@ -23,6 +23,8 @@ const server = z.object({
   AUTH0_CLIENT_ID: z.string(),
   AUTH0_CLIENT_SECRET: z.string(),
   AUTH0_ISSUER: z.string(),
+  CLOUDINARY_API: z.string(),
+  CLOUDINARY_SK: z.string(),
 });
 
 /**
@@ -32,6 +34,7 @@ const server = z.object({
  */
 const client = z.object({
   // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+  NEXT_PUBLIC_CLOUD_NAME: z.string(),
 });
 
 /**
@@ -47,6 +50,9 @@ const processEnv = {
   AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
   AUTH0_CLIENT_SECRET: process.env.AUTH0_CLIENT_SECRET,
   AUTH0_ISSUER: process.env.AUTH0_ISSUER,
+  CLOUDINARY_API: process.env.CLOUDINARY_API,
+  CLOUDINARY_SK: process.env.CLOUDINARY_SK,
+  NEXT_PUBLIC_CLOUD_NAME: process.env.NEXT_PUBLIC_CLOUD_NAME,
 };
 
 // Don't touch the part below
