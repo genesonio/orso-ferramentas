@@ -8,3 +8,9 @@ cloudinary.config( {
   api_secret: env.CLOUDINARY_SK,
   secure: true
 } )
+
+export const Uploader = async ( photo: string ) => {
+  const res = await cloudinary.uploader.upload( photo )
+    .catch( err => console.error( err ) )
+  return res
+}
