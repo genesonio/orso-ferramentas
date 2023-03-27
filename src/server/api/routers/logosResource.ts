@@ -3,16 +3,24 @@ import { createTRPCRouter, publicProcedure } from "../trpc"
 
 export const logosResource = createTRPCRouter( {
   upload: publicProcedure.input( z.object( {
-    name: z.string(),
+    name: z.string().optional(),
     photo: z.string()
   } ) ).mutation( async ( { ctx, input } ) => {
     const { name, photo } = input
-    await ctx.prisma.logos.create( {
-      data: {
-        name,
-        photo
-      }
-    } )
+    if ( name ) {
+      await ctx.prisma.logos.create( {
+        data: {
+          name,
+          photo
+        }
+      } )
+    } else {
+      await ctx.prisma.logos.create( {
+        data: {
+          photo
+        }
+      } )
+    }
   } ),
   list: publicProcedure.query( async ( { ctx } ) => {
     const logos = await ctx.prisma.logos.findMany()
@@ -24,7 +32,7 @@ export const logosResource = createTRPCRouter( {
   } ),
   update: publicProcedure.input( z.object( {
     id: z.string(),
-    name: z.string(),
+    name: z.string().optional(),
     photo: z.string()
   } ) ).mutation( async ( { ctx, input } ) => {
     const { id, name, photo } = input

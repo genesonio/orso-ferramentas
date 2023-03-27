@@ -3,8 +3,8 @@ import { createTRPCRouter, publicProcedure } from "../trpc"
 
 export const carouselResource = createTRPCRouter( {
   upload: publicProcedure.input( z.object( {
-    title: z.string(),
-    subTitle: z.string(),
+    title: z.string().optional(),
+    subTitle: z.string().optional(),
     photo: z.string()
   } ) ).mutation( async ( { ctx, input } ) => {
     const { title, subTitle, photo } = input
