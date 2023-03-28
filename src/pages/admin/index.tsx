@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import Login from "../../components/LoginButton";
 import Logout from "../../components/LogoutButton";
+import Manage from "../../components/Manage";
 import NaturalImage from "../../components/NaturalImage";
 import Upload from "../../components/Upload";
 import useAdminAuth from "../../utils/useAdminAuth";
@@ -55,6 +56,7 @@ const Admin = () => {
             </button>
           </div>
           {panel === "upload" && <Upload />}
+          {panel === "manage" && <Manage />}
         </>
       )}
     </>
