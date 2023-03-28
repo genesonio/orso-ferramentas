@@ -3,13 +3,15 @@ import { createTRPCRouter, publicProcedure } from "../trpc"
 
 export const carouselResource = createTRPCRouter( {
   upload: publicProcedure.input( z.object( {
+    id: z.string(),
     title: z.string().optional(),
     subTitle: z.string().optional(),
     photo: z.string()
   } ) ).mutation( async ( { ctx, input } ) => {
-    const { title, subTitle, photo } = input
+    const { id, title, subTitle, photo } = input
     await ctx.prisma.carousel.create( {
       data: {
+        id,
         title,
         subTitle,
         photo

@@ -3,13 +3,15 @@ import { createTRPCRouter, publicProcedure } from "../trpc"
 
 export const logosResource = createTRPCRouter( {
   upload: publicProcedure.input( z.object( {
+    id: z.string(),
     name: z.string().optional(),
     photo: z.string()
   } ) ).mutation( async ( { ctx, input } ) => {
-    const { name, photo } = input
+    const { id, name, photo } = input
     if ( name ) {
       await ctx.prisma.logos.create( {
         data: {
+          id,
           name,
           photo
         }
