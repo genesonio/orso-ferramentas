@@ -6,18 +6,19 @@ import type { ChangeEvent, MouseEvent } from "react";
 import { api } from "../utils/api";
 
 interface PhotoObj {
-  name?: "";
-  title?: "";
-  subTitle?: "";
+  id: string;
+  name?: string;
+  title?: string;
+  subTitle?: string;
 }
 
 const Upload = () => {
   const [photo, setPhoto] = useState<File | string | Iterable<Uint8Array>>("");
   const [preview, setPreview] = useState<string | null>(null);
-  const [table, setTable] = useState<"carousel" | "logo" | "catalogo">(
+  const [table, setTable] = useState<"carousel" | "logos" | "tools">(
     "carousel"
   );
-  const [photoObj, setPhotoObj] = useState<PhotoObj>();
+  const [photoObj, setPhotoObj] = useState<PhotoObj>({ id: "" });
 
   const carouselMut = api.carousel.upload.useMutation();
   const toolsMut = api.tools.upload.useMutation();
@@ -36,20 +37,21 @@ const Upload = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setPhotoObj((prev) => {
-      return { ...prev, [name]: value };
-    });
+    const temp = photoObj;
+    setPhotoObj({ ...temp, [name]: value });
   };
 
   const handleUpload = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
+    debugger;
 
     const formData = new FormData();
     formData.append("file", photo as string);
     formData.append("upload_preset", "my-uploads");
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const data: { secure_url: string } = await fetch(
+    const data: { secure_url: string; public_id: string } = await fetch(
       "https://api.cloudinary.com/v1_1/orso-ferramentas/image/upload",
       {
         method: "POST",
@@ -60,17 +62,20 @@ const Upload = () => {
     console.log(data);
 
     const secureUrl = data.secure_url;
+    const id = data.public_id.slice(11);
+    console.log(id);
 
     if (table === "carousel" && photoObj) {
-      carouselMut.mutate({ ...photoObj, photo: secureUrl });
+      carouselMut.mutate({ ...photoObj, photo: secureUrl, id });
     }
-    if (table === "catalogo" && photoObj) {
-      toolsMut.mutate({ ...photoObj, photo: secureUrl });
+    if (table === "tools" && photoObj) {
+      toolsMut.mutate({ ...photoObj, photo: secureUrl, id });
     }
-    if (table === "logo" && photoObj) {
-      logosMut.mutate({ ...photoObj, photo: secureUrl });
+    if (table === "logos" && photoObj) {
+      logosMut.mutate({ ...photoObj, photo: secureUrl, id });
     }
-    window.location.reload();
+
+    //window.location.reload();
   };
 
   return (
@@ -80,7 +85,7 @@ const Upload = () => {
           <label htmlFor="table">Para: </label>
           <select
             onChange={({ target }) =>
-              setTable(target.value as "carousel" | "logo" | "catalogo")
+              setTable(target.value as "carousel" | "logos" | "tools")
             }
             name="table"
             id="table"
