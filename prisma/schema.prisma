@@ -66,19 +66,19 @@ model VerificationToken {
 }
 
 model Logos {
-    id    String @id @default(cuid())
+    id    String @id
     name  String
     photo String
 }
 
 model Tools {
-    id    String @id @default(cuid())
+    id    String @id
     name  String
     photo String
 }
 
 model Carousel {
-    id       String  @id @default(cuid())
+    id       String  @id
     photo    String
     title    String?
     subTitle String?
