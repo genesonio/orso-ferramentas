@@ -26,16 +26,14 @@ export const photoResource = createTRPCRouter( {
   } ),
   update: publicProcedure.input( z.object( {
     id: z.string(),
-    photo: z.string(),
     toShow: z.string(),
     name: z.string().optional(),
     title: z.string().optional(),
     subTitle: z.string().optional()
   } ) ).mutation( async ( { ctx, input } ) => {
-    const { id, photo, toShow, name, title, subTitle } = input
+    const { id, toShow, name, title, subTitle } = input
     await ctx.prisma.photos.update( {
       data: {
-        photo,
         toShow,
         name,
         title,
