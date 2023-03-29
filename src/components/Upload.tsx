@@ -6,7 +6,7 @@ import type { ChangeEvent, MouseEvent } from "react";
 import { api } from "../utils/api";
 
 interface PhotoObj {
-  id: string;
+  toShow: string;
   name?: string;
   title?: string;
   subTitle?: string;
@@ -18,11 +18,17 @@ const Upload = () => {
   const [table, setTable] = useState<"carousel" | "logos" | "tools">(
     "carousel"
   );
-  const [photoObj, setPhotoObj] = useState<PhotoObj>({ id: "" });
+  const [photoObj, setPhotoObj] = useState<PhotoObj>({ toShow: "carousel" });
 
-  const carouselMut = api.carousel.upload.useMutation();
-  const toolsMut = api.tools.upload.useMutation();
-  const logosMut = api.logos.upload.useMutation();
+  const mutation = api.photos.upload.useMutation();
+
+  const handleTable = (e: ChangeEvent<HTMLSelectElement>) => {
+    setTable(e.target.value as "carousel" | "logos" | "tools");
+    setPhotoObj({
+      ...photoObj,
+      toShow: e.target.value,
+    });
+  };
 
   const handlePhoto = (e: ChangeEvent<HTMLInputElement>) => {
     if (
@@ -44,8 +50,6 @@ const Upload = () => {
   const handleUpload = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    debugger;
-
     const formData = new FormData();
     formData.append("file", photo as string);
     formData.append("upload_preset", "my-uploads");
@@ -65,31 +69,21 @@ const Upload = () => {
     const id = data.public_id.slice(11);
     console.log(id);
 
-    if (table === "carousel" && photoObj) {
-      carouselMut.mutate({ ...photoObj, photo: secureUrl, id });
-    }
-    if (table === "tools" && photoObj) {
-      toolsMut.mutate({ ...photoObj, photo: secureUrl, id });
-    }
-    if (table === "logos" && photoObj) {
-      logosMut.mutate({ ...photoObj, photo: secureUrl, id });
-    }
+    mutation.mutate({
+      ...photoObj,
+      id,
+      photo: secureUrl,
+    });
 
-    //window.location.reload();
+    window.location.reload();
   };
 
   return (
     <>
       <form className="flex max-w-sm flex-col gap-y-6">
         <div className="flex gap-x-4">
-          <label htmlFor="table">Para: </label>
-          <select
-            onChange={({ target }) =>
-              setTable(target.value as "carousel" | "logos" | "tools")
-            }
-            name="table"
-            id="table"
-          >
+          <label htmlFor="toShow">Para: </label>
+          <select onChange={(e) => handleTable(e)} name="toShow" id="toShow">
             <optgroup>
               <option value="carousel">Carrossel</option>
               <option value="logo">Logos</option>
