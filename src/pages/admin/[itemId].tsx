@@ -6,7 +6,7 @@ import { api } from "../../utils/api";
 import type { ChangeEvent, MouseEvent } from "react";
 import NaturalImage from "../../components/NaturalImage";
 import Link from "next/link";
-import { Delete } from "../../libs/cloudinary.mjs";
+import { Delete } from "../../libs/cloudinary.js";
 
 type Photos = {
   id: string;
