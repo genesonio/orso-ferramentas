@@ -69,9 +69,9 @@ model Photos {
     id        String   @id
     photo     String
     toShow    String
-    name      String?
-    title     String?
-    subTitle  String?
+    name      String?  @default("")
+    title     String?  @default("")
+    subTitle  String?  @default("")
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
