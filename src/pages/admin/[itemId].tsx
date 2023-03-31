@@ -6,7 +6,6 @@ import { api } from "../../utils/api";
 import type { ChangeEvent, MouseEvent } from "react";
 import NaturalImage from "../../components/NaturalImage";
 import Link from "next/link";
-import { Delete } from "../../libs/cloudinary.js";
 
 type Photos = {
   id: string;
@@ -25,6 +24,7 @@ const Item = () => {
 
   const { data } = api.photos.getOne.useQuery(itemId as string);
   const mutation = api.photos.update.useMutation();
+  const useDelete = api.photos.delete.useMutation();
 
   useEffect(() => {
     if (!data) return;
@@ -48,13 +48,8 @@ const Item = () => {
     window.location.reload();
   };
 
-  const handleDelete = (
-    e: MouseEvent<HTMLInputElement, globalThis.MouseEvent>
-  ) => {
-    e.preventDefault();
-
-    Delete(item.id).catch((err) => console.error(err));
-    api.photos.delete.useQuery(item.id);
+  const handleDelete = () => {
+    useDelete.mutate(item.id);
   };
 
   return (
@@ -129,12 +124,13 @@ const Item = () => {
               onClick={(e) => handleUpdate(e)}
               value="Update"
             />
-            <input
-              type="submit"
-              className="w-24 cursor-pointer rounded-2xl border-2 border-[#666] py-1 px-3 font-bold shadow shadow-[#272727] transition-all hover:translate-y-[-1px] hover:shadow-md hover:shadow-[#272727] active:translate-y-[1px] active:shadow-sm active:shadow-[#272727]"
-              onClick={(e) => handleDelete(e)}
-              value="Delete"
-            />
+            <Link
+              onClick={() => useDelete.mutate(item.id)}
+              href="/admin"
+              className="w-24 cursor-pointer rounded-2xl border-2 border-[#666] py-1 px-3 text-center font-bold shadow shadow-[#272727] transition-all hover:translate-y-[-1px] hover:shadow-md hover:shadow-[#272727] active:translate-y-[1px] active:shadow-sm active:shadow-[#272727]"
+            >
+              Delete
+            </Link>
           </div>
         </form>
       ) : (

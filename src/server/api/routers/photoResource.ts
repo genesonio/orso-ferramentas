@@ -1,4 +1,5 @@
 import { z } from "zod"
+import { Delete } from "../../../libs/cloudinary"
 import { createTRPCRouter, publicProcedure } from "../trpc"
 
 export const photoResource = createTRPCRouter( {
@@ -44,7 +45,8 @@ export const photoResource = createTRPCRouter( {
       }
     } )
   } ),
-  delete: publicProcedure.input( z.string() ).query( async ( { ctx, input } ) => {
+  delete: publicProcedure.input( z.string() ).mutation( async ( { ctx, input } ) => {
+    await Delete( input )
     await ctx.prisma.photos.delete( { where: { id: input } } )
   } )
 } )

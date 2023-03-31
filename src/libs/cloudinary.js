@@ -12,8 +12,7 @@ cloudinary.config({
 
 export const Delete = async (id) => {
   const public_id = "my-uploads/" + id;
-  const res = await cloudinary.api.delete_resources(public_id, (res) =>
-    console.log(res)
-  );
+  const res = await cloudinary.api.delete_resources(public_id, (res) => res);
+  console.log(res);
   return res;
 };
