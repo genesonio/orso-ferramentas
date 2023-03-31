@@ -11,8 +11,6 @@ const Manage = () => {
 
   const { data } = api.photos.list.useQuery();
 
-  console.log(data);
-
   if (!data) return <h1>No data found!</h1>;
 
   return (
@@ -46,6 +44,15 @@ const Manage = () => {
         {data.map((item, index) => {
           if (item.toShow === table) {
             return <ManageItem key={index} data={item} table={table} />;
+          } else {
+            return (
+              <h1
+                className="text-bold col-span-full text-3xl italic"
+                key={index}
+              >
+                Nothing to show
+              </h1>
+            );
           }
         })}
       </section>

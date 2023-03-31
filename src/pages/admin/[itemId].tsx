@@ -48,10 +48,6 @@ const Item = () => {
     window.location.reload();
   };
 
-  const handleDelete = () => {
-    useDelete.mutate(item.id);
-  };
-
   return (
     <section>
       {item ? (
