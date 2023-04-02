@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import "swiper/swiper.css";
 import NaturalImage from "../components/NaturalImage";
+import Menu from "../components/Test";
 
 const Home: NextPage = () => {
   const images = [
@@ -53,6 +54,8 @@ const Home: NextPage = () => {
               className="object-cover"
             />
           </div>
+
+          <Menu />
 
           <ul className="flex gap-7">
             <li>
