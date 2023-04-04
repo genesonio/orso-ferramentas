@@ -86,8 +86,8 @@ const Upload = () => {
           <select onChange={(e) => handleTable(e)} name="toShow" id="toShow">
             <optgroup>
               <option value="carousel">Carrossel</option>
-              <option value="logo">Logos</option>
-              <option value="catalogo">Catálogo</option>
+              <option value="logos">Logos</option>
+              <option value="tools">Catálogo</option>
             </optgroup>
           </select>
         </div>
