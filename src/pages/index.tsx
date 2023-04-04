@@ -9,10 +9,10 @@ import "swiper/swiper-bundle.css";
 import "swiper/swiper.css";
 
 import NaturalImage from "../components/NaturalImage";
-import Menu from "../components/Menu";
+import Footer from "../components/Footer";
 
 import { type NextPage } from "next";
-import Footer from "../components/Footer";
+import { api } from "../utils/api";
 
 const Home: NextPage = () => {
   const images = [
@@ -21,20 +21,13 @@ const Home: NextPage = () => {
     "/orso/pneumatica_texto.png",
   ];
 
-  const logos = [
-    "/empresas/cartec.png",
-    "/empresas/celfer.png",
-    "/empresas/chimonek.png",
-    "/empresas/Emeb.png",
-    "/empresas/engecass.svg",
-    "/empresas/felar.png",
-    "/empresas/kingtony.png",
-    "/empresas/m7.svg",
-    "/empresas/planatc.png",
-    "/empresas/raven.png",
-    "/empresas/sigma.png",
-    "/empresas/uniao.png",
-  ];
+  const { data } = api.photos.list.useQuery();
+
+  if (!data || typeof data == "undefined") {
+    console.error("Database ERROR");
+    return <></>;
+  }
+  const logos = data.filter((photo) => photo.toShow == "logos" && photo);
 
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text).catch((err) => console.error(err));
@@ -104,9 +97,16 @@ const Home: NextPage = () => {
               },
             }}
           >
-            {logos.map((url, index) => (
+            {logos.map((logo, index) => (
               <SwiperSlide key={index}>
-                <Image fill style={{ objectFit: "contain" }} src={url} alt="" />
+                <Image
+                  fill
+                  style={{ objectFit: "contain" }}
+                  src={logo.photo}
+                  alt={`Logo da empresa ${
+                    logo.name ? logo.name : "não identificada"
+                  }`}
+                />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -190,11 +190,11 @@ const Home: NextPage = () => {
             <div className="flex justify-between gap-5 max-[950px]:flex-col max-[950px]:overflow-x-hidden max-md:flex-row max-sm:flex-col">
               <div className="">
                 <p>Celular: </p>
-                <p>(48) 9 9821-0444</p>
+                <p>(48) 9 9197-3180</p>
                 <div className="flex gap-5">
                   <button
                     className="relative h-8 w-8 hover:translate-y-[-1px] active:translate-y-[1px]"
-                    onClick={() => handleCopy("48998210444")}
+                    onClick={() => handleCopy("48991973180")}
                   >
                     <Image
                       fill
@@ -207,7 +207,7 @@ const Home: NextPage = () => {
                     className="relative h-7 w-7 hover:translate-y-[-1px] active:translate-y-[1px]"
                     target="_blank"
                     rel="noreferrer"
-                    href="https://wa.me/5548998210444?text=Olá,%20gostaria%20de%20um%20orçamento."
+                    href="https://wa.me/5548991973180?text=Olá,%20gostaria%20de%20um%20orçamento."
                   >
                     <Image
                       fill
