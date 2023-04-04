@@ -18,7 +18,7 @@ const Menu = () => {
   );
 
   return (
-    <>
+    <nav className="fixed top-0 z-50 flex h-20 w-screen items-center justify-between self-center bg-[#d4d4d4] px-[4.2%] shadow-sm shadow-[#666] ">
       <a
         href="#home"
         onClick={() => handleClick("home")}
@@ -83,7 +83,7 @@ const Menu = () => {
           </a>
         </li>
       </ul>
-    </>
+    </nav>
   );
 };
 

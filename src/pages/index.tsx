@@ -50,9 +50,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="flex w-11/12 flex-col">
-        <nav className="fixed top-0 z-50 flex h-20 w-screen items-center justify-between self-center bg-[#d4d4d4] px-[4.2%] shadow-sm shadow-[#666] ">
-          <Menu />
-        </nav>
+        <Menu />
 
         <section
           id="home"
