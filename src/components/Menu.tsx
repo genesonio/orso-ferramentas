@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 
 import Image from "next/image";
 import NaturalImage from "./NaturalImage";
+import Link from "next/link";
 
 const Menu = () => {
   const [mobileMenu, setMobileMenu] = useState<boolean>(false);
@@ -62,26 +63,34 @@ const Menu = () => {
             </div>
           </>
         )}
-        <li className={activeMenu == "home" ? "font-bold" : ""}>
-          <a onClick={() => handleClick("home")} href="#home">
-            Home
-          </a>
-        </li>
-        <li className={activeMenu == "about" ? "font-bold " : ""}>
-          <a onClick={() => handleClick("about")} href="#about">
-            Sobre
-          </a>
-        </li>
-        <li className={activeMenu == "contact" ? "font-bold" : ""}>
-          <a onClick={() => handleClick("contact")} href="#contact">
-            Contato
-          </a>
-        </li>
-        <li className={activeMenu == "catalogo" ? "font-bold" : ""}>
-          <a onClick={() => handleClick("catalogo")} href="">
-            Catálogo
-          </a>
-        </li>
+        {activeMenu != "catalogo" ? (
+          <>
+            <li className={activeMenu == "home" ? "font-bold" : ""}>
+              <a onClick={() => handleClick("home")} href="#home">
+                Home
+              </a>
+            </li>
+            <li className={activeMenu == "about" ? "font-bold " : ""}>
+              <a onClick={() => handleClick("about")} href="#about">
+                Sobre
+              </a>
+            </li>
+            <li className={activeMenu == "contact" ? "font-bold" : ""}>
+              <a onClick={() => handleClick("contact")} href="#contact">
+                Contato
+              </a>
+            </li>
+            <li className="text-red-900">
+              <Link onClick={() => handleClick("catalogo")} href="/catalogo">
+                Catálogo
+              </Link>
+            </li>
+          </>
+        ) : (
+          <li className="text-lg font-bold" onClick={() => handleClick("home")}>
+            <Link href="/">Back</Link>
+          </li>
+        )}
       </ul>
     </nav>
   );
