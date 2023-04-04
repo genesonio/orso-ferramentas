@@ -49,8 +49,6 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="flex w-11/12 flex-col">
-        <Menu />
-
         <section
           id="home"
           className="flex h-screen flex-col gap-10 pt-20  max-[1025px]:h-[75vh]"
@@ -139,21 +137,32 @@ const Home: NextPage = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-4 max-[950px]:max-h-[70%] max-[950px]:items-center xl:mr-[10%]">
-              <img
-                className="rounded-2xl"
-                src="http://lorempixel.com.br/200/200/?1"
-                alt=""
-              />
-              <img
-                className="rounded-2xl"
-                src="http://lorempixel.com.br/200/200/?2"
-                alt=""
-              />
-              <img
-                src="http://lorempixel.com.br/420/250/?3"
-                alt=""
-                className="col-span-2 rounded-2xl"
-              />
+              <div className="relative h-[200px] w-[200px]">
+                <Image
+                  fill
+                  src="/missao1.jpg"
+                  alt=""
+                  className="rounded-2xl object-cover"
+                />
+              </div>
+
+              <div className="relative h-[200px] w-[200px]">
+                <Image
+                  fill
+                  src="/missao2.jpg"
+                  alt=""
+                  className="rounded-2xl object-cover"
+                />
+              </div>
+
+              <div className="relative col-span-2 h-[250px] w-[420px]">
+                <Image
+                  fill
+                  src="/missao3.jpg"
+                  alt=""
+                  className="rounded-2xl object-cover"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -164,8 +173,8 @@ const Home: NextPage = () => {
         >
           <NaturalImage
             alt=""
-            src="http://lorempixel.com.br/1080/1080"
-            className="w-1/2 object-contain max-md:hidden"
+            src="/contato.jpg"
+            className="w-1/2 object-cover max-md:hidden"
           />
 
           <div className="flex w-1/2 flex-col gap-16 pt-12 max-md:w-full max-md:pt-2">
