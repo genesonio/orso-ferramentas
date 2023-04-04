@@ -28,7 +28,7 @@ const Menu = () => {
       </a>
 
       <div
-        className="flex items-center justify-center min-[426px]:hidden"
+        className="flex items-center justify-center min-[550px]:hidden"
         onClick={() => setMobileMenu(true)}
       >
         <svg
@@ -49,8 +49,8 @@ const Menu = () => {
 
       <ul
         className={`flex gap-7 ${
-          mobileMenu ? "max-[425px]:top-0" : "max-[425px]:-top-[100vh]"
-        } max-[425px]:z-1 transition-all max-[425px]:absolute max-[425px]:left-0 max-[425px]:h-screen max-[425px]:w-screen max-[425px]:flex-col max-[425px]:items-center max-[425px]:justify-center max-[425px]:gap-12 max-[425px]:bg-gray-400 max-[425px]:text-2xl`}
+          mobileMenu ? "max-[550px]:top-0" : "max-[550px]:-top-[100vh]"
+        } max-[550px]:z-1 transition-all max-[550px]:absolute max-[550px]:left-0 max-[550px]:h-screen max-[550px]:w-screen max-[550px]:flex-col max-[550px]:items-center max-[550px]:justify-center max-[550px]:gap-12 max-[550px]:bg-gray-400 max-[550px]:text-2xl`}
       >
         {mobileMenu && (
           <>
