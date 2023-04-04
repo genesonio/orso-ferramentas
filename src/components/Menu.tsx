@@ -87,8 +87,10 @@ const Menu = () => {
             </li>
           </>
         ) : (
-          <li className="text-lg font-bold" onClick={() => handleClick("home")}>
-            <Link href="/">Back</Link>
+          <li className="text-lg font-bold">
+            <Link href="/" onClick={() => handleClick("home")}>
+              Back
+            </Link>
           </li>
         )}
       </ul>
