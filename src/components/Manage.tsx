@@ -11,7 +11,7 @@ const Manage = () => {
 
   const { data } = api.photos.list.useQuery();
 
-  if (!data) return <h1>No data found!</h1>;
+  if (!data || data.length == 0) return <h1>No data found!</h1>;
 
   return (
     <>

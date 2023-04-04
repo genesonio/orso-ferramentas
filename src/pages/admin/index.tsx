@@ -1,5 +1,6 @@
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import Link from "next/link";
 
 import Login from "../../components/LoginButton";
 import Logout from "../../components/LogoutButton";
@@ -13,6 +14,7 @@ const Admin = () => {
 
   const { data: session } = useSession();
   const auth: boolean | undefined = useAdminAuth(session?.user?.email);
+  if (!session) return null;
 
   return (
     <>
@@ -26,22 +28,32 @@ const Admin = () => {
       )}
       {auth && (
         <>
-          <div className="flex w-screen items-center justify-between px-10 pt-2">
-            <div className="flex w-max items-center gap-x-4">
-              {session && session.user.image && (
+          <div className="flex w-screen items-center justify-between px-10 pt-2 max-[426px]:px-2">
+            <div className="flex w-max items-center gap-x-4 max-[425px]:flex-col max-[425px]:gap-3">
+              {session.user.image && (
                 <div className="w-32">
                   <NaturalImage
                     className="rounded-full"
-                    src={session?.user.image}
+                    src={session.user.image}
                     alt=""
                   />
                 </div>
               )}
-              <h1>Olá, {session?.user.name}</h1>
+              <h1>Olá, {session.user.name}</h1>
             </div>
-            <Logout className="h-9 cursor-pointer rounded-2xl border-2 border-[#666] py-1 px-3 font-bold shadow shadow-[#272727] transition-all hover:translate-y-[-1px] hover:shadow-md hover:shadow-[#272727] active:translate-y-[1px] active:shadow-sm active:shadow-[#272727]" />
+
+            <div className="flex h-full flex-col gap-8">
+              <Logout className="h-9 cursor-pointer rounded-2xl border-2 border-[#666] py-1 px-3 text-center font-bold shadow shadow-[#272727] transition-all hover:translate-y-[-1px] hover:shadow-md hover:shadow-[#272727] active:translate-y-[1px] active:shadow-sm active:shadow-[#272727]" />
+
+              <Link
+                href="/"
+                className="h-9 cursor-pointer rounded-2xl border-2 border-[#666] py-1 px-3 text-center font-bold shadow shadow-[#272727] transition-all hover:translate-y-[-1px] hover:shadow-md hover:shadow-[#272727] active:translate-y-[1px] active:shadow-sm active:shadow-[#272727]"
+              >
+                Back
+              </Link>
+            </div>
           </div>
-          <div className="mb-6 flex gap-x-4">
+          <div className="my-6 flex gap-x-4">
             <button
               className={panel == "upload" ? "font-bold" : ""}
               onClick={() => setPanel("upload")}

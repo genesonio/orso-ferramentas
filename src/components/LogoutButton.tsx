@@ -1,4 +1,4 @@
-import { signIn, signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 import type { FC } from "react";
 
@@ -9,7 +9,7 @@ const Logout: FC<CustomButton> = ({ ...props }) => {
     <input
       {...props}
       type="button"
-      value="logout"
+      value="Logout"
       onClick={() => {
         signOut()
           .then(() => console.log("login"))

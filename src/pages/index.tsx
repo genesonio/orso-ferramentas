@@ -1,12 +1,17 @@
-import { type NextPage } from "next";
+/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import Image from "next/image";
+
 import { Autoplay, EffectFade } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import "swiper/swiper-bundle.css";
 import "swiper/swiper.css";
+
 import NaturalImage from "../components/NaturalImage";
-import Menu from "../components/Test";
+import Menu from "../components/Menu";
+
+import { type NextPage } from "next";
 
 const Home: NextPage = () => {
   const images = [
@@ -46,36 +51,12 @@ const Home: NextPage = () => {
 
       <main className="flex w-11/12 flex-col">
         <nav className="fixed top-0 z-50 flex h-20 w-screen items-center justify-between self-center bg-[#d4d4d4] px-[4.2%] shadow-sm shadow-[#666] ">
-          <div className="relative h-36 w-36">
-            <Image
-              src="/logo.png"
-              fill
-              alt="Logotipo"
-              className="object-cover"
-            />
-          </div>
-
           <Menu />
-
-          <ul className="flex gap-7">
-            <li>
-              <a href="#home">Home</a>
-            </li>
-            <li>
-              <a href="#sobre">Sobre</a>
-            </li>
-            <li>
-              <a href="#contato">Contato</a>
-            </li>
-            <li>
-              <a href="">Catálogo</a>
-            </li>
-          </ul>
         </nav>
 
         <section
           id="home"
-          className="flex h-screen flex-col gap-10 pt-20  max-[1025px]:h-[75vh] max-[768px]:h-[63vh] max-sm:h-[45vh]"
+          className="flex h-screen flex-col gap-10 pt-20  max-[1025px]:h-[75vh]"
         >
           <Swiper
             className="left-[-4.55%] h-auto w-screen"
@@ -101,7 +82,7 @@ const Home: NextPage = () => {
           </Swiper>
 
           <Swiper
-            className="mx-auto h-[100px] w-full max-md:h-[75px] max-sm:h-[50px]"
+            className="mx-auto h-[100px] w-full max-[426px]:m-auto"
             grabCursor={true}
             spaceBetween={30}
             autoplay={{
@@ -124,7 +105,7 @@ const Home: NextPage = () => {
               },
               1440: {
                 width: 1440,
-                slidesPerView: 7,
+                slidesPerView: 6,
               },
             }}
           >
@@ -137,8 +118,8 @@ const Home: NextPage = () => {
         </section>
 
         <section
-          id="sobre"
-          className="flex h-[970px] flex-col gap-[2rem] pt-24 max-sm:h-fit"
+          id="about"
+          className="flex h-screen flex-col gap-[2rem] pt-24 max-sm:h-fit"
         >
           <h1 className="text-center text-5xl font-semibold">Sobre nós</h1>
           <p className="mx-auto w-auto max-w-lg text-center">
@@ -181,8 +162,8 @@ const Home: NextPage = () => {
         </section>
 
         <section
-          id="contato"
-          className="max-sm: flex h-[800px] gap-12 pt-11 max-md:h-[650px]"
+          id="contact"
+          className="flex h-screen gap-12 pt-11 max-[425px]:pt-20"
         >
           <NaturalImage
             alt=""
