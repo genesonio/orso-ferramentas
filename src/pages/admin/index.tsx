@@ -28,7 +28,7 @@ const Admin = () => {
       )}
       {auth && (
         <>
-          <div className="flex w-screen items-center justify-between px-10 pt-2 max-[426px]:px-2">
+          <div className="flex w-screen items-center justify-between px-10 pt-28 max-[426px]:px-2">
             <div className="flex w-max items-center gap-x-4 max-[425px]:flex-col max-[425px]:gap-3">
               {session.user.image && (
                 <div className="w-32">
