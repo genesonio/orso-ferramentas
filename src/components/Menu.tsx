@@ -20,13 +20,9 @@ const Menu = () => {
 
   return (
     <nav className="fixed top-0 z-50 flex h-20 w-screen items-center justify-between self-center bg-[#d4d4d4] px-[4.2%] shadow-sm shadow-[#666] ">
-      <a
-        href="#home"
-        onClick={() => handleClick("home")}
-        className="relative h-36 w-36"
-      >
+      <div className="relative h-36 w-36">
         <Image src="/logo.png" fill alt="Logotipo" className="object-cover" />
-      </a>
+      </div>
 
       <div
         className="flex items-center justify-center min-[550px]:hidden"
@@ -65,17 +61,33 @@ const Menu = () => {
         )}
         {activeMenu != "catalogo" ? (
           <>
-            <li className={activeMenu == "home" ? "font-bold" : ""}>
+            <li
+              className={`after:transition-width after:relative after:left-0 after:bottom-[-4px] after:block after:h-[2px] after:bg-[#272727] after:duration-300 ${
+                activeMenu == "home" ? "font-bold after:w-full" : "after:w-[0%]"
+              }`}
+            >
               <a onClick={() => handleClick("home")} href="#home">
                 Home
               </a>
             </li>
-            <li className={activeMenu == "about" ? "font-bold " : ""}>
+            <li
+              className={`after:transition-width after:relative after:left-0 after:bottom-[-4px] after:block after:h-[2px] after:bg-[#272727] after:duration-300 ${
+                activeMenu == "about"
+                  ? "font-bold after:w-full"
+                  : "after:w-[0%]"
+              }`}
+            >
               <a onClick={() => handleClick("about")} href="#about">
                 Sobre
               </a>
             </li>
-            <li className={activeMenu == "contact" ? "font-bold" : ""}>
+            <li
+              className={`after:transition-width after:relative after:left-0 after:bottom-[-4px] after:block after:h-[2px] after:bg-[#272727] after:duration-300 ${
+                activeMenu == "contact"
+                  ? "font-bold after:w-full"
+                  : "after:w-[0%]"
+              }`}
+            >
               <a onClick={() => handleClick("contact")} href="#contact">
                 Contato
               </a>

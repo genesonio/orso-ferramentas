@@ -220,10 +220,10 @@ const Home: NextPage = () => {
               </div>
               <div className="">
                 <p>Email:</p>
-                <p>orsoferramentas@exemplo.com</p>
+                <p>orsoferramentas@gmail.com</p>
                 <button
                   className="relative h-8 w-8 hover:translate-y-[-1px] active:translate-y-[1px]"
-                  onClick={() => handleCopy("orsoferramentas@exemplo.com")}
+                  onClick={() => handleCopy("orsoferramentas@gmail.com")}
                 >
                   <Image
                     fill
