@@ -124,9 +124,11 @@ const Home: NextPage = () => {
             elas para uso profissional ou caseiro.
           </p>
 
-          <div className="flex h-[520px] w-full justify-between gap-x-8 rounded-3xl bg-[#272727] py-8 px-8 text-[#d4d4d4] shadow max-[950px]:items-center max-sm:h-fit max-sm:flex-col max-sm:gap-y-8 max-sm:gap-x-0">
+          <div className="flex h-[520px] w-full justify-between gap-x-8 rounded-3xl bg-[#272727] py-8 px-8 text-[#d4d4d4] shadow max-[950px]:h-fit max-[950px]:flex-col max-[950px]:items-center max-[950px]:gap-y-8 max-[950px]:gap-x-0">
             <div className="flex flex-col justify-center gap-3 xl:ml-[10%]">
-              <h1 className="text-4xl font-semibold">Nossa missão</h1>
+              <h1 className="text-4xl font-semibold max-[950px]:text-center">
+                Nossa missão
+              </h1>
               <p className="w-auto max-w-lg text-justify">
                 Entregar ferramentas especiais com qualidade e confiabilidade,
                 superando as expectativas dos clientes. Utilizamos materiais de
@@ -136,8 +138,8 @@ const Home: NextPage = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 max-[950px]:max-h-[70%] max-[950px]:items-center xl:mr-[10%]">
-              <div className="relative h-[200px] w-[200px]">
+            <div className="grid grid-cols-2 gap-4 max-[950px]:items-center max-[550px]:w-full xl:mr-[10%]">
+              <div className="relative h-[200px] w-[200px] max-[1150px]:w-[170px] max-[1050px]:h-[150px] max-[1000px]:w-[140px] max-[950px]:h-[200px] max-[950px]:w-[200px] max-[550px]:w-full">
                 <Image
                   fill
                   src="/missao1.jpg"
@@ -146,7 +148,7 @@ const Home: NextPage = () => {
                 />
               </div>
 
-              <div className="relative h-[200px] w-[200px]">
+              <div className="relative h-[200px] w-[200px] max-[1150px]:w-[170px] max-[1050px]:h-[150px] max-[1000px]:w-[140px] max-[950px]:h-[200px] max-[950px]:w-[200px] max-[550px]:w-full">
                 <Image
                   fill
                   src="/missao2.jpg"
@@ -155,7 +157,7 @@ const Home: NextPage = () => {
                 />
               </div>
 
-              <div className="relative col-span-2 h-[250px] w-[420px]">
+              <div className="relative col-span-2 h-[250px] w-[420px] max-[1150px]:w-[360px] max-[1050px]:w-[345px] max-[1000px]:w-[300px] max-[950px]:w-[420px] max-[550px]:w-full">
                 <Image
                   fill
                   src="/missao3.jpg"
@@ -169,15 +171,15 @@ const Home: NextPage = () => {
 
         <section
           id="contact"
-          className="flex h-screen gap-12 pt-11 max-[425px]:pt-20"
+          className="flex h-screen gap-12 pt-11 max-[950px]:mt-24 max-[950px]:pt-20 max-[425px]:pt-20"
         >
           <NaturalImage
             alt=""
             src="/contato.jpg"
-            className="w-1/2 object-cover max-md:hidden"
+            className="w-1/2 object-cover max-[950px]:hidden"
           />
 
-          <div className="flex w-1/2 flex-col gap-16 pt-12 max-md:w-full max-md:pt-2">
+          <div className="flex w-1/2 flex-col gap-16 pt-12 max-[950px]:w-full max-[950px]:pt-2">
             <h1 className="text-center text-5xl font-bold">Contato</h1>
             <p className="text-justify">
               Estamos ansiosos para ouvir de você! Se você tiver alguma dúvida
@@ -187,8 +189,8 @@ const Home: NextPage = () => {
               Você pode entrar em contato conosco por telefone, e-mail ou
               através de nossas redes sociais.
             </p>
-            <div className="flex justify-between gap-5 max-[950px]:flex-col max-[950px]:overflow-x-hidden max-md:flex-row max-sm:flex-col">
-              <div className="">
+            <div className="flex justify-between gap-5 max-[950px]:flex-row max-[950px]:flex-col max-[950px]:overflow-x-hidden">
+              <div>
                 <p>Celular: </p>
                 <p>(48) 9 9197-3180</p>
                 <div className="flex gap-5">
@@ -218,7 +220,7 @@ const Home: NextPage = () => {
                   </a>
                 </div>
               </div>
-              <div className="">
+              <div>
                 <p>Email:</p>
                 <p>orsoferramentas@gmail.com</p>
                 <button
