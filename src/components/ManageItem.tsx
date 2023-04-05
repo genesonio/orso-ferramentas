@@ -4,14 +4,7 @@ import NaturalImage from "./NaturalImage";
 
 import type { Photos } from "@prisma/client";
 
-const ManageItem = ({
-  table,
-  data,
-  ...props
-}: {
-  table: string;
-  data: Photos;
-}) => {
+const ManageItem = ({ data, ...props }: { data: Photos }) => {
   return (
     <Link
       {...props}

@@ -13,6 +13,10 @@ const Manage = () => {
 
   if (!data || data.length == 0) return <h1>No data found!</h1>;
 
+  const haveCarousel = data.some((photo) => photo.toShow === "carousel");
+  const haveLogos = data.some((photo) => photo.toShow === "logos");
+  const haveTools = data.some((photo) => photo.toShow === "tools");
+
   return (
     <>
       <nav>
@@ -43,18 +47,18 @@ const Manage = () => {
       <section className="mt-8 grid w-[80vw] grid-cols-manage8 justify-items-center gap-x-2 max-[1440px]:grid-cols-manage7 max-[1200px]:grid-cols-manage6 max-[1020px]:grid-cols-manage5 max-[840px]:grid-cols-manage4 max-[675px]:grid-cols-manage3 max-[570px]:grid-cols-manage2 max-[350px]:grid-cols-manage1">
         {data.map((item, index) => {
           if (item.toShow === table) {
-            return <ManageItem key={index} data={item} table={table} />;
-          } else {
-            return (
-              <h1
-                className="text-bold col-span-full text-3xl italic"
-                key={index}
-              >
-                Nothing to show
-              </h1>
-            );
+            return <ManageItem key={index} data={item} />;
           }
         })}
+        {table === "carousel" && !haveCarousel && (
+          <h1 className="col-span-full font-bold italic">Nothing to show.</h1>
+        )}
+        {table === "logos" && !haveLogos && (
+          <h1 className="col-span-full font-bold italic">Nothing to show.</h1>
+        )}
+        {table === "tools" && !haveTools && (
+          <h1 className="col-span-full font-bold italic">Nothing to show.</h1>
+        )}
       </section>
     </>
   );
