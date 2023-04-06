@@ -92,7 +92,7 @@ const Menu = () => {
                 Contato
               </a>
             </li>
-            <li className="text-red-900">
+            <li className="text-gray-400">
               <Link
                 className="cursor-not-allowed"
                 //onClick={() => handleClick("catalogo")}
