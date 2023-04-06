@@ -14,7 +14,6 @@ const Admin = () => {
 
   const { data: session } = useSession();
   const auth: boolean | undefined = useAdminAuth(session?.user?.email);
-  if (!session) return null;
 
   return (
     <>
@@ -26,7 +25,7 @@ const Admin = () => {
           <Login className="cursor-pointer rounded-2xl border-2 border-[#666] py-1 px-3 font-bold shadow shadow-[#272727] transition-all hover:translate-y-[-1px] hover:shadow-md hover:shadow-[#272727] active:translate-y-[1px] active:shadow-sm active:shadow-[#272727]" />
         </>
       )}
-      {auth && (
+      {auth && session && (
         <>
           <div className="flex w-screen items-center justify-between px-10 pt-28 max-[426px]:px-2">
             <div className="flex w-max items-center gap-x-4 max-[425px]:flex-col max-[425px]:gap-3">

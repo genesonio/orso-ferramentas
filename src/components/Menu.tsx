@@ -93,7 +93,11 @@ const Menu = () => {
               </a>
             </li>
             <li className="text-red-900">
-              <Link onClick={() => handleClick("catalogo")} href="/catalogo">
+              <Link
+                className="cursor-not-allowed"
+                //onClick={() => handleClick("catalogo")}
+                href=""
+              >
                 Catálogo
               </Link>
             </li>

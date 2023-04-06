@@ -15,12 +15,6 @@ import { type NextPage } from "next";
 import { api } from "../utils/api";
 
 const Home: NextPage = () => {
-  const images = [
-    "/orso/elevacar_texto.png",
-    "/orso/ferramentas_texto.png",
-    "/orso/pneumatica_texto.png",
-  ];
-
   const { data } = api.photos.list.useQuery();
 
   if (!data || typeof data == "undefined") {
@@ -28,6 +22,7 @@ const Home: NextPage = () => {
     return <></>;
   }
   const logos = data.filter((photo) => photo.toShow == "logos" && photo);
+  const carousel = data.filter((photo) => photo.toShow == "carousel" && photo);
 
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text).catch((err) => console.error(err));
@@ -62,9 +57,9 @@ const Home: NextPage = () => {
             loop={true}
             slidesPerView={1}
           >
-            {images.map((url, index) => (
-              <SwiperSlide key={index}>
-                <NaturalImage src={url} alt="" />
+            {carousel.map((photo) => (
+              <SwiperSlide key={photo.id}>
+                <NaturalImage src={photo.photo} alt="" />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -189,11 +184,11 @@ const Home: NextPage = () => {
               Você pode entrar em contato conosco por telefone, e-mail ou
               através de nossas redes sociais.
             </p>
-            <div className="flex justify-between gap-5 max-[950px]:flex-row max-[950px]:flex-col max-[950px]:overflow-x-hidden">
+            <div className="flex justify-between gap-5 max-[950px]:flex-col max-[950px]:overflow-x-hidden">
               <div>
                 <p>Celular: </p>
                 <p>(48) 9 9197-3180</p>
-                <div className="flex gap-5">
+                <div className="mt-2 flex gap-5">
                   <button
                     className="relative h-8 w-8 hover:translate-y-[-1px] active:translate-y-[1px]"
                     onClick={() => handleCopy("48991973180")}
@@ -224,7 +219,7 @@ const Home: NextPage = () => {
                 <p>Email:</p>
                 <p>orsoferramentas@gmail.com</p>
                 <button
-                  className="relative h-8 w-8 hover:translate-y-[-1px] active:translate-y-[1px]"
+                  className="relative mt-2 h-8 w-8 hover:translate-y-[-1px] active:translate-y-[1px]"
                   onClick={() => handleCopy("orsoferramentas@gmail.com")}
                 >
                   <Image
