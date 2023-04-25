@@ -109,7 +109,7 @@ const Home: NextPage = () => {
 
         <section
           id="about"
-          className="flex h-screen flex-col gap-[2rem] pt-24 max-sm:h-fit"
+          className="flex min-h-screen flex-col gap-[2rem] pt-24 max-sm:h-fit"
         >
           <h1 className="text-center text-5xl font-semibold">Sobre nós</h1>
           <p className="mx-auto w-auto max-w-lg text-center">
@@ -174,7 +174,7 @@ const Home: NextPage = () => {
             className="w-1/2 object-cover max-[950px]:hidden"
           />
 
-          <div className="flex w-1/2 flex-col gap-16 pt-12 max-[950px]:w-full max-[950px]:pt-2">
+          <div className="flex w-1/2 flex-col gap-16 pt-12 max-[950px]:w-full max-[950px]:gap-14 max-[950px]:pt-2">
             <h1 className="text-center text-5xl font-bold">Contato</h1>
             <p className="text-justify">
               Estamos ansiosos para ouvir de você! Se você tiver alguma dúvida
