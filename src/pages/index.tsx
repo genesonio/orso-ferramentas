@@ -184,7 +184,7 @@ const Home: NextPage = () => {
               Você pode entrar em contato conosco por telefone, e-mail ou
               através de nossas redes sociais.
             </p>
-            <div className="flex justify-between gap-5 max-[950px]:flex-col max-[950px]:overflow-x-hidden">
+            <div className="flex justify-between gap-5 max-[950px]:h-fit max-[950px]:flex-col">
               <div>
                 <p>Celular: </p>
                 <p>(48) 9 9197-3180</p>
